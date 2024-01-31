@@ -3,7 +3,7 @@
 with lib;
 {
   system.stateVersion = "22.05";
-  
+
   wsl = {
     enable = true;
     automountPath = "/mnt";
