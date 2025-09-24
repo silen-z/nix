@@ -1,4 +1,11 @@
-{ lib, pkgs, config, modulesPath, wsl, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  modulesPath,
+  wsl,
+  ...
+}:
 
 with lib;
 {

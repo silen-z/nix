@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   environment.systemPackages = with pkgs; [
     xfce.xfce4-xkb-plugin
@@ -9,11 +10,11 @@
     desktopManager = {
       xfce.enable = true;
     };
-    layout = "us";
-    videoDrivers = [ "displaylink" "modesetting" ];
-    displayManager = {
-      defaultSession = "xfce";
-      lightdm.enable = true;
-    };
+    xkb.layout = "us";
+    videoDrivers = [
+      "displaylink"
+      "modesetting"
+    ];
   };
+  services.displayManager.defaultSession = "xfce";
 }

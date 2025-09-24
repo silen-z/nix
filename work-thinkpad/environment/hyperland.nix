@@ -1,7 +1,8 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     # widgets
-    # eww-wayland 
+    # eww-wayland
 
     # screensharing for wayland/hyprland
     pipewire

@@ -1,20 +1,46 @@
-{ config, pkgs, unstable, ... }:
-
+{
+  config,
+  pkgs,
+  unstable,
+  ...
+}:
 {
   home.stateVersion = "22.11";
 
   programs.fish.enable = true;
-  programs.helix.enable = true;
 
-  programs.wezterm = {
+  programs.ghostty = {
     enable = true;
-    extraConfig = builtins.readFile ../../wezterm/config.lua;
+    enableFishIntegration = true;
+    settings = {
+      command = "${pkgs.fish}/bin/fish";
+      theme = "GitLab-Light";
+
+      keybind = [
+        "ctrl+g=unbind"
+        "ctrl+t=unbind"
+        "ctrl+n=unbind"
+        "ctrl+c=unbind"
+        "ctrl+w=unbind"
+        "ctrl+opt+left=unbind"
+        "ctrl+opt+right=unbind"
+      ];
+    };
+  };
+
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "onelight";
+    };
   };
 
   programs.git = {
     enable = true;
     userName = "Pavel Hrách";
     userEmail = "pavel.hrach@moderntv.eu";
+
+    # difftastic.enable = true;
   };
 
   programs.ssh = {
@@ -30,11 +56,28 @@
 
   home.packages = [
     pkgs.firefox
-    pkgs.spotify
-    pkgs.vscodium
     pkgs.chromium
-    unstable.jetbrains.phpstorm
-    #    unstable.jetbrains.idea-community
+    pkgs.spotify
+    pkgs.xarchiver
+    pkgs.jq
+    pkgs.difftastic
+    pkgs.nodejs
+    pkgs.rustup
+    pkgs.cascadia-code
+    pkgs.openttd
+    unstable.jujutsu
+
+    # IDEs
+    pkgs.jetbrains.phpstorm
+    unstable.code-cursor
+    unstable.zed-editor
+    # unstable.vscode
+    # unstable.vscodium
+    # unstable.jetbrains.idea-community
+  ];
+
+  home.sessionPath = [
+    "/home/pavelh/.cargo/bin"
   ];
 
   home.sessionVariables = {

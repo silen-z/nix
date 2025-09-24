@@ -13,26 +13,6 @@
 
   programs.helix.enable = true;
 
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      font = {
-        normal = {
-          family = "Cascadia Code";
-        };
-      };
-    };
-  };
-
-  programs.tmux = {
-    enable = true;
-    extraConfig = ''
-      #set-option -g default-shell ${pkgs.nushell}
-      set-option -g default-command nu
-      set-option -sg escape-time 0
-    '';
-  };
-
   programs.git = {
     enable = true;
     userName = "Pavel Hrách";
