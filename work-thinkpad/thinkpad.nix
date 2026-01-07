@@ -29,8 +29,8 @@ nixpkgs.lib.nixosSystem {
     ./hardware.nix
     nixos-hardware.nixosModules.lenovo-thinkpad-l14-intel
     ./configuration.nix
-    # ./environment/xfce.nix
-    ./environment/niri.nix
+     ./environment/xfce.nix
+    #./environment/niri.nix
     home-manager.nixosModules.home-manager
     home
   ];

@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   unstable,
   ...
@@ -68,12 +67,16 @@
     unstable.jujutsu
 
     # IDEs
-    pkgs.jetbrains.phpstorm
+    # pkgs.jetbrains.phpstorm
+    unstable.jetbrains.phpstorm
     unstable.code-cursor
     unstable.zed-editor
+    unstable.nil
+    unstable.nixd
+    unstable.go
+    unstable.gopls
     # unstable.vscode
     # unstable.vscodium
-    # unstable.jetbrains.idea-community
   ];
 
   home.sessionPath = [
