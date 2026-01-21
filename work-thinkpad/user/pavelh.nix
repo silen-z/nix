@@ -13,7 +13,7 @@
     enableFishIntegration = true;
     settings = {
       command = "${pkgs.fish}/bin/fish";
-      theme = "GitLab-Light";
+      theme = "Light Owl";
 
       keybind = [
         "ctrl+g=unbind"
@@ -36,8 +36,10 @@
 
   programs.git = {
     enable = true;
-    userName = "Pavel Hrách";
-    userEmail = "pavel.hrach@moderntv.eu";
+    settings = {
+      user.name = "Pavel Hrách";
+      user.email = "pavel.hrach@moderntv.eu";
+    };
 
     # difftastic.enable = true;
   };
@@ -64,7 +66,7 @@
     pkgs.rustup
     pkgs.cascadia-code
     pkgs.openttd
-    unstable.jujutsu
+    pkgs.debootstrap
 
     # IDEs
     # pkgs.jetbrains.phpstorm
@@ -75,6 +77,8 @@
     unstable.nixd
     unstable.go
     unstable.gopls
+    unstable.codex
+    unstable.jujutsu
     # unstable.vscode
     # unstable.vscodium
   ];
