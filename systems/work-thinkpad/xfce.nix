@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
 
-  environment.systemPackages = with pkgs; [
-    xfce.xfce4-xkb-plugin
+  environment.systemPackages = [
+    pkgs.xfce4-xkb-plugin
   ];
 
   services.xserver = {

@@ -62,16 +62,22 @@
     pkgs.xarchiver
     pkgs.jq
     pkgs.difftastic
-    pkgs.nodejs
+    pkgs.nodejs_24
     pkgs.rustup
     pkgs.cascadia-code
     pkgs.openttd
     pkgs.debootstrap
+    pkgs.coreutils
+    pkgs.vagrant
+    pkgs.gnumake
+    pkgs.just
+    pkgs.uv
 
     # IDEs
     # pkgs.jetbrains.phpstorm
     unstable.jetbrains.phpstorm
     unstable.code-cursor
+    unstable.cursor-cli
     unstable.zed-editor
     unstable.nil
     unstable.nixd
@@ -79,6 +85,7 @@
     unstable.gopls
     unstable.codex
     unstable.jujutsu
+    unstable.claude-code
     # unstable.vscode
     # unstable.vscodium
   ];
