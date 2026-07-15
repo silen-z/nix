@@ -59,6 +59,7 @@
     pkgs.firefox
     pkgs.chromium
     pkgs.spotify
+    pkgs.vlc
     pkgs.xarchiver
     pkgs.jq
     pkgs.difftastic
