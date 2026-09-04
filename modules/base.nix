@@ -13,11 +13,9 @@
   };
 
   environment.systemPackages = with pkgs; [
-    displaylink
     ntfs3g
-    clang
-    pkg-config
     openssl
+    devenv
   ];
 
   environment.shells = [ pkgs.fish ];

@@ -2,22 +2,24 @@
 {
   programs.niri.enable = true;
 
-  programs.waybar.enable = true; # top bar
+  # Noctalia provides the bar, launcher, notifications, wallpaper, idle
+  # daemon and lock screen, replacing waybar/fuzzel/mako/swaylock/swayidle.
+  programs.noctalia = {
+    enable = true;
+    recommendedServices.enable = true; # NetworkManager, Bluetooth, UPower
+  };
 
-  services.greetd = {
+  services.power-profiles-daemon.enable = true;
+
+  # Noctalia's own greeter, matching the shell's look; replaces greetd+tuigreet.
+  programs.noctalia-greeter = {
     enable = true;
     settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd niri-session";
-      };
+      session.default = "niri";
     };
   };
 
   environment.systemPackages = with pkgs; [
-    fuzzel
-    swaylock
-    mako
-    swayidle
     xwayland-satellite
   ];
 }

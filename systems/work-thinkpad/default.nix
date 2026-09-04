@@ -3,8 +3,8 @@
   nixpkgs-unstable,
   nixos-hardware,
   home-manager,
-  variant,
-  desktop,
+  noctalia,
+  noctalia-greeter,
 }:
 let
   system = "x86_64-linux";
@@ -21,6 +21,7 @@ let
         inherit system;
         config.allowUnfree = true;
       };
+      inherit noctalia;
     };
   };
 in
@@ -28,7 +29,7 @@ nixpkgs.lib.nixosSystem {
   inherit system;
 
   specialArgs = {
-    flakeUri = "/home/pavelh/.config/nix#work-thinkpad-${variant}";
+    flakeUri = "/home/pavelh/.config/nix#work-thinkpad";
   };
 
   modules = [
@@ -42,9 +43,12 @@ nixpkgs.lib.nixosSystem {
     ../../modules/nix.nix
     ../../modules/base.nix
 
-    desktop
+    ./niri.nix
 
     home-manager.nixosModules.home-manager
     home
+
+    noctalia.nixosModules.default
+    noctalia-greeter.nixosModules.default
   ];
 }

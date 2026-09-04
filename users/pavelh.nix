@@ -1,12 +1,29 @@
 {
   pkgs,
   unstable,
+  noctalia,
   ...
 }:
 {
+  imports = [ noctalia.homeModules.default ];
+
   home.stateVersion = "22.11";
 
   programs.fish.enable = true;
+
+  programs.noctalia.enable = true;
+
+  # XFCE got a working cursor theme for free via xfsettingsd/GTK defaults.
+  # niri has no such daemon, so without this, XCURSOR_THEME/XCURSOR_SIZE are
+  # unset and niri falls back to an internal theme that's missing most cursor
+  # shapes (text, pointer, resize, grab, etc. never change on hover).
+  home.pointerCursor = {
+    package = pkgs.adwaita-icon-theme;
+    name = "Adwaita";
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true; # covers Xwayland apps via xwayland-satellite
+  };
 
   programs.ghostty = {
     enable = true;
@@ -58,21 +75,16 @@
   home.packages = [
     pkgs.firefox
     pkgs.chromium
-    pkgs.spotify
     pkgs.vlc
     pkgs.xarchiver
     pkgs.jq
     pkgs.difftastic
     pkgs.nodejs_24
-    pkgs.rustup
     pkgs.cascadia-code
-    pkgs.openttd
     pkgs.debootstrap
     pkgs.coreutils
     pkgs.vagrant
     pkgs.gnumake
-    pkgs.just
-    pkgs.uv
 
     # IDEs
     # pkgs.jetbrains.phpstorm
@@ -84,7 +96,6 @@
     unstable.nixd
     unstable.go
     unstable.gopls
-    unstable.codex
     unstable.jujutsu
     unstable.claude-code
     # unstable.vscode

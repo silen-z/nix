@@ -19,4 +19,11 @@
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
+
+  # VA-API hardware video decode/encode (e.g. for Firefox WebRTC calls)
+  hardware.graphics = {
+    enable = true;
+    extraPackages = [ pkgs.intel-media-driver ];
+  };
+  environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
 }

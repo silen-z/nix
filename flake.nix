@@ -14,6 +14,17 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Noctalia desktop shell + greeter.
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -22,29 +33,20 @@
       nixpkgs-unstable,
       nixos-hardware,
       home-manager,
+      noctalia,
+      noctalia-greeter,
       ...
     }:
     {
-      nixosConfigurations.work-thinkpad-xfce = import ./systems/work-thinkpad {
+      nixosConfigurations.work-thinkpad = import ./systems/work-thinkpad {
         inherit
           nixpkgs
           nixpkgs-unstable
           nixos-hardware
           home-manager
+          noctalia
+          noctalia-greeter
           ;
-        variant = "xfce";
-        desktop = ./systems/work-thinkpad/xfce.nix;
-      };
-
-      nixosConfigurations.work-thinkpad-niri = import ./systems/work-thinkpad {
-        inherit
-          nixpkgs
-          nixpkgs-unstable
-          nixos-hardware
-          home-manager
-          ;
-        variant = "niri";
-        desktop = ./systems/work-thinkpad/niri.nix;
       };
     };
 }
